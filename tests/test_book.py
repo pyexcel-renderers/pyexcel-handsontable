@@ -1,7 +1,6 @@
 import os
 from mock import patch
 import pyexcel
-from textwrap import dedent
 from nose.tools import assert_equal
 
 

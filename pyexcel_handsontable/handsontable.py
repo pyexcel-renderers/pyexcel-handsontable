@@ -39,84 +39,112 @@ SHEET = """
 
 BOOK_STYLE = """
 <style>
-div#hot {
-width: 100%;
-height:100%;
-}
-body {font-family: "Lato", sans-serif;}
+body {font-family: "Lato", sans-serif;margin: 0px;}
 
-ul.tab {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #f1f1f1;
-}
+  .tab {
+      text-align: center;
+      list-style: none;
+      padding: 0 0 0 10px;
+      line-height: 24px;
+      height: 26px;
+      overflow: hidden;
+      font-size: 12px;
+      font-family: verdana;
+      position: relative;
+      margin:0px;
+  }
+  .tab li {
+      float:left;
+      height: 24px;
+      border: 1px solid #AAA;
+      background: #D1D1D1;
+      background: -o-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+      background: -ms-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+      background: -moz-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+      background: -webkit-linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+      background: linear-gradient(top, #ECECEC 50%, #D1D1D1 100%);
+      display: inline-block;
+      position: relative;
+      z-index: 0;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #FFF;
+      text-shadow: 0 1px #FFF;
+      margin: 0 -5px;
+      padding: 0 20px;
+  }
+  .tab a {
+  	  color: #555;
+  	  text-decoration: none;
+  }
+  .tab li.active {
+      background: #FFF;
+      color: #333;
+      z-index: 2;
+  }
+  .tab:before {
+      position: absolute;
+      content: " ";
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      border-bottom: 1px solid #AAA;
+      z-index: 1;
+  }
+  .tab li:before {
+      left: -6px;
+      border-width: 0 1px 1px 0;
+      box-shadow: 2px 2px 0 #D1D1D1;
+  }
+  .tab li:after {
+      right: -6px;
+      border-width: 0 0 1px 1px;
+      box-shadow: -2px 2px 0 #D1D1D1;
+  }
+ .tabcontent {
+      margin-top: -1px;
+ }
 
-/* Float the list items side by side */
-ul.tab li {float: left;}
-
-/* Style the links inside the list items */
-ul.tab li a {
-    display: inline-block;
-    color: black;
-    text-align: center;
-    padding: 16px 14px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-/* Change background color of links on hover */
-ul.tab li a:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-ul.tab li a:focus, .active {
-    background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: block;
-}
 </style>
 """
 
 BOOK_DIV = """
-<div id="{1}-sheet" class="tabcontent">
+<div id="{1}-sheet" class="tabcontent {0}">
   <div id="{1}"></div>
 </div>
 """
 
 BOOK_TAB = """
-<li>
-<a href="javascript:void(0)" class="tablinks" onClick="openTab(event, \'{1}-sheet\')">{0}</a>
+<li id='{1}-sheet-li' class="tabli">
+<a href="javascript:void(0)" onClick="openTab(event, \'{2}\', \'{1}-sheet\')">{0}</a>
 </li>
 """
 
 BOOK_SCRIPTS = """
 <script>
-function openTab(evt, tabId) {
+function openTab(evt, bookId, tabId) {
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
+    tabcontent = document.getElementsByClassName(bookId);
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tablinks");
+    tablinks = document.getElementsByClassName("tabli");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(tabId).style.display = "block";
-    evt.currentTarget.className += " active";
+    //evt.currentTarget.className += " active";
+    tablinks = document.getElementById(tabId+"-li");
+    tablinks.className += " active";
 }
-function activateFirst() {
+function activateFirst(bookId, firstTab) {
     var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
+    tabcontent = document.getElementsByClassName(bookId);
     for (i = 1; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
+    tablinks = document.getElementById(firstTab+'-li');
+    tablinks.className += " active";
 }
 </script>
 """
@@ -166,6 +194,7 @@ class HandsonTable(Renderer):
             self._stream.write('</body></html>')
 
     def render_book(self, book, embed=False, **keywords):
+        book_uuid = 'book-' + _generate_uuid()
         if not embed:
             self._stream.write('<html><head>')
             if 'css_url' in keywords:
@@ -184,13 +213,15 @@ class HandsonTable(Renderer):
         scripts = '<script>\n'
         common = BOOK_COMMON % (json.dumps(keywords))
         scripts += common
+        uids = []
         for sheet in book:
             uid = _generate_uuid()
-            tabs += BOOK_TAB.format(sheet.name, uid)
-            divs += BOOK_DIV.format(sheet.name, uid)
+            tabs += BOOK_TAB.format(sheet.name, uid, book_uuid)
+            divs += BOOK_DIV.format(book_uuid, uid)
             scripts += BOOK_SHEET % (uid, json.dumps(sheet.array))
+            uids.append(uid)
         tabs += '</ul>\n'
-        scripts += "activateFirst();"
+        scripts += "activateFirst('%s', '%s-sheet');\n" % (book_uuid, uids[0])
         scripts += '</script>\n'
         table = tabs + divs + BOOK_SCRIPTS + scripts
         self._stream.write(table)

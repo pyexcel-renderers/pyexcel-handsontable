@@ -1,0 +1,131 @@
+<html><head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.31.0/handsontable.full.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.31.0/handsontable.full.min.js"></script>
+
+<style>
+div#hot {
+width: 100%;
+height:100%;
+}
+body {font-family: "Lato", sans-serif;}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 16px 14px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: block;
+}
+</style>
+</head><body><ul class="tab">
+
+<li>
+<a href="javascript:void(0)" class="tablinks" onClick="openTab(event, '1-sheet')">pyexcel sheet</a>
+</li>
+
+<li>
+<a href="javascript:void(0)" class="tablinks" onClick="openTab(event, '2-sheet')">pyexcel sheet_1</a>
+</li>
+
+<li>
+<a href="javascript:void(0)" class="tablinks" onClick="openTab(event, '3-sheet')">pyexcel sheet_2</a>
+</li>
+</ul>
+
+<div id="1-sheet" class="tabcontent">
+  <div id="1"></div>
+</div>
+
+<div id="2-sheet" class="tabcontent">
+  <div id="2"></div>
+</div>
+
+<div id="3-sheet" class="tabcontent">
+  <div id="3"></div>
+</div>
+
+<script>
+function openTab(evt, tabId) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabId).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+function activateFirst() {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 1; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+}
+</script>
+<script>
+
+  var defaults = {
+    colHeaders: true,
+    rowHeaders: true,
+    preventOverflow: "hornizontal"
+  };
+  var myconfig = {};
+
+  var pyexcelElement = document.querySelector("#1");
+  var pyexcelElementContainer = pyexcelElement.parentNode;
+
+  var mydata = [[1]];
+  var actualconfig = Object.assign({}, defaults, myconfig);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
+
+  var pyexcelElement = document.querySelector("#2");
+  var pyexcelElementContainer = pyexcelElement.parentNode;
+
+  var mydata = [[2]];
+  var actualconfig = Object.assign({}, defaults, myconfig);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
+
+  var pyexcelElement = document.querySelector("#3");
+  var pyexcelElementContainer = pyexcelElement.parentNode;
+
+  var mydata = [[3]];
+  var actualconfig = Object.assign({}, defaults, myconfig);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
+activateFirst();</script>
+</body></html>
