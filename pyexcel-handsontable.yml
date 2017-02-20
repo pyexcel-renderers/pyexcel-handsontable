@@ -1,0 +1,8 @@
+overrides: "pyexcel.yaml"
+name: "pyexcel-handsontable"
+nick_name: handsontable
+version: 0.0.1
+release: 0.0.1
+dependencies:
+  - pyexcel>=0.4.4
+description: A plugin to present data in handsontable in html pages
