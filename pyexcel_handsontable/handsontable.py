@@ -84,6 +84,18 @@ ul.tab li a:focus, .active {
 </style>
 """
 
+BOOK_DIV = """
+<div id="{1}-sheet" class="tabcontent">
+  <div id="{1}"></div>
+</div>
+"""
+
+BOOK_TAB = """
+<li>
+<a href="javascript:void(0)" class="tablinks" onClick="openTab(event, \'{1}-sheet\')">{0}</a>
+</li>
+"""
+
 BOOK_SCRIPTS = """
 <script>
 function openTab(evt, tabId) {
@@ -174,12 +186,8 @@ class HandsonTable(Renderer):
         scripts += common
         for sheet in book:
             uid = _generate_uuid()
-            tabs += '<li><a href="javascript:void(0)" class="tablinks" onClick="openTab(event, \'{1}-sheet\')">{0}</a></li>\n'.format(sheet.name, uid)
-            divs += """
-            <div id="{1}-sheet" class="tabcontent">
-              <div id="{1}"></div>
-            </div>
-            """.format(sheet.name, uid)
+            tabs += BOOK_TAB.format(sheet.name, uid)
+            divs += BOOK_DIV.format(sheet.name, uid)
             scripts += BOOK_SHEET % (uid, json.dumps(sheet.array))
         tabs += '</ul>\n'
         scripts += "activateFirst();"
