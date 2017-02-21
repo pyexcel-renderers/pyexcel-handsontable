@@ -3,4 +3,5 @@
 mock
 pyexcel
 pyexcel-xls
+pyscss
 {%endblock%}

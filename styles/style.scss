@@ -1,0 +1,83 @@
+//colors
+$color_silver_chalice_approx: #aaa;
+$color_celeste_approx: #d1d1d1;
+$color_cararra_approx: #ececec;
+$white: #fff;
+$black_40: rgba(0, 0, 0, 0.4);
+$color_fuscous_gray_approx: #555;
+$color_mine_shaft_approx: #333;
+
+//fonts
+$font_0: Lato;
+$font_1: sans-serif;
+$font_2: verdana;
+
+body {
+	font-family: $font_0, $font_1;
+	margin: 0;
+}
+.tab {
+	text-align: center;
+	list-style: none;
+	padding: 0 0 0 10px;
+	line-height: 24px;
+	height: 26px;
+	overflow: hidden;
+	font-size: 12px;
+	font-family: $font_2;
+	position: relative;
+	margin: 0;
+	li {
+		float: left;
+		height: 24px;
+		border: 1px solid $color_silver_chalice_approx;
+		background: $color_celeste_approx;
+		background: linear-gradient(top, $color_cararra_approx 50%, $color_celeste_approx 100%);
+		display: inline-block;
+		position: relative;
+		z-index: 0;
+		//Instead of the line below you could use @include border-top-left-radius($radius)
+		border-top-left-radius: 6px;
+		//Instead of the line below you could use @include border-top-right-radius($radius)
+		border-top-right-radius: 6px;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: 0 3px 3px $black_40, inset 0 1px 0 $white;
+		//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		text-shadow: 0 1px $white;
+		margin: 0 -5px;
+		padding: 0 20px;
+		&.active {
+			background: $white;
+			color: $color_mine_shaft_approx;
+			z-index: 2;
+		}
+		&:before {
+			left: -6px;
+			border-width: 0 1px 1px 0;
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: 2px 2px 0 $color_celeste_approx;
+		}
+		&:after {
+			right: -6px;
+			border-width: 0 0 1px 1px;
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: -2px 2px 0 $color_celeste_approx;
+		}
+	}
+	a {
+		color: $color_fuscous_gray_approx;
+		text-decoration: none;
+	}
+	&:before {
+		position: absolute;
+		content: " ";
+		width: 100%;
+		bottom: 0;
+		left: 0;
+		border-bottom: 1px solid $color_silver_chalice_approx;
+		z-index: 1;
+	}
+}
+.tabcontent {
+	margin-top: -1px;
+}

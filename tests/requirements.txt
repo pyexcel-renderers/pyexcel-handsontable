@@ -2,5 +2,7 @@ nose
 codecov
 coverage
 flake8
+mock
 pyexcel
 pyexcel-xls
+pyscss
