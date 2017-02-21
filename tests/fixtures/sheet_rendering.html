@@ -9,34 +9,14 @@ body{font-family:Lato,sans-serif;margin:0}.tab{text-align:center;list-style:none
 </head><body><ul class="tab">
 
 <!-- BOOK_TAB -->
-<li id='2-sheet-li' class="1-book-li">
-<a href="javascript:void(0)" onClick="openTab(event, '1-book', '2-sheet')">pyexcel sheet</a>
-</li>
-
-<!-- BOOK_TAB -->
-<li id='3-sheet-li' class="1-book-li">
-<a href="javascript:void(0)" onClick="openTab(event, '1-book', '3-sheet')">pyexcel sheet_1</a>
-</li>
-
-<!-- BOOK_TAB -->
-<li id='4-sheet-li' class="1-book-li">
-<a href="javascript:void(0)" onClick="openTab(event, '1-book', '4-sheet')">pyexcel sheet_2</a>
+<li id='1-sheet-li' class="1-book-li">
+<a href="javascript:void(0)" onClick="openTab(event, '1-book', '1-sheet')">pyexcel sheet</a>
 </li>
 </ul>
 
 <!-- BOOK_DIV -->
-<div id="2-sheet" class="tabcontent 1-book">
-  <div id="2"></div>
-</div>
-
-<!-- BOOK_DIV -->
-<div id="3-sheet" class="tabcontent 1-book">
-  <div id="3"></div>
-</div>
-
-<!-- BOOK_DIV -->
-<div id="4-sheet" class="tabcontent 1-book">
-  <div id="4"></div>
+<div id="1-sheet" class="tabcontent 1-book">
+  <div id="1"></div>
 </div>
 
 <!-- BOOK_SCRIPTS -->
@@ -74,31 +54,13 @@ function activateFirst(bookId, firstTab) {
   var myconfig = {};
 
 // BOOK_SHEET
-  var pyexcelElement = document.querySelector("#2");
+  var pyexcelElement = document.querySelector("#1");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[1]];
   var actualconfig = Object.assign({}, defaults, myconfig);
   actualconfig["data"] = mydata;
   new Handsontable(pyexcelElement, actualconfig);
-
-// BOOK_SHEET
-  var pyexcelElement = document.querySelector("#3");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
-
-  var mydata = [[2]];
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
-
-// BOOK_SHEET
-  var pyexcelElement = document.querySelector("#4");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
-
-  var mydata = [[3]];
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
-  activateFirst('1-book', '2-sheet');
+  activateFirst('1-book', '1-sheet');
 </script>
 </body></html>

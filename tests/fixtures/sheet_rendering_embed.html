@@ -1,0 +1,57 @@
+<ul class="tab">
+
+<!-- BOOK_TAB -->
+<li id='1-sheet-li' class="1-book-li">
+<a href="javascript:void(0)" onClick="openTab(event, '1-book', '1-sheet')">pyexcel sheet</a>
+</li>
+</ul>
+
+<!-- BOOK_DIV -->
+<div id="1-sheet" class="tabcontent 1-book">
+  <div id="1"></div>
+</div>
+
+<!-- BOOK_SCRIPTS -->
+<script>
+function openTab(evt, bookId, tabId) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName(bookId);
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName(bookId+"-li");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabId).style.display = "block";
+    document.getElementById(tabId+"-li").className += " active";
+}
+function activateFirst(bookId, firstTab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName(bookId);
+    for (i = 1; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    document.getElementById(firstTab+'-li').className += " active";
+}
+</script>
+<script>
+
+// BOOK_COMMON
+  var defaults = {
+    colHeaders: true,
+    rowHeaders: true,
+    preventOverflow: "hornizontal"
+  };
+  var myconfig = {};
+
+// BOOK_SHEET
+  var pyexcelElement = document.querySelector("#1");
+  var pyexcelElementContainer = pyexcelElement.parentNode;
+
+  var mydata = [[1]];
+  var actualconfig = Object.assign({}, defaults, myconfig);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
+  activateFirst('1-book', '1-sheet');
+</script>
