@@ -6,23 +6,27 @@ CSS_URL = HOST + "handsontable.full.min.css"
 
 
 HANDSON_FILES = """
+<!-- HANDSON_FILES -->
 <link rel="stylesheet" type="text/css" href="%s">
 <script src="%s"></script>
 """
 
 BOOK_DIV = """
+<!-- BOOK_DIV -->
 <div id="{1}-sheet" class="tabcontent {0}">
   <div id="{1}"></div>
 </div>
 """
 
 BOOK_TAB = """
-<li id='{1}-sheet-li' class="tabli">
+<!-- BOOK_TAB -->
+<li id='{1}-sheet-li' class="{2}-li">
 <a href="javascript:void(0)" onClick="openTab(event, \'{2}\', \'{1}-sheet\')">{0}</a>
 </li>
 """
 
 BOOK_SCRIPTS = """
+<!-- BOOK_SCRIPTS -->
 <script>
 function openTab(evt, bookId, tabId) {
     var i, tabcontent, tablinks;
@@ -30,14 +34,12 @@ function openTab(evt, bookId, tabId) {
     for (i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tabli");
+    tablinks = document.getElementsByClassName(bookId+"-li");
     for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
     document.getElementById(tabId).style.display = "block";
-    //evt.currentTarget.className += " active";
-    tablinks = document.getElementById(tabId+"-li");
-    tablinks.className += " active";
+    document.getElementById(tabId+"-li").className += " active";
 }
 function activateFirst(bookId, firstTab) {
     var i, tabcontent, tablinks;
@@ -45,13 +47,13 @@ function activateFirst(bookId, firstTab) {
     for (i = 1; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
     }
-    tablinks = document.getElementById(firstTab+'-li');
-    tablinks.className += " active";
+    document.getElementById(firstTab+'-li').className += " active";
 }
 </script>
 """
 
 BOOK_COMMON = """
+// BOOK_COMMON
   var defaults = {
     colHeaders: true,
     rowHeaders: true,
@@ -61,6 +63,7 @@ BOOK_COMMON = """
 """
 
 BOOK_SHEET = """
+// BOOK_SHEET
   var pyexcelElement = document.querySelector("#%s");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 

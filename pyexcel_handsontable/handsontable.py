@@ -39,7 +39,7 @@ class HandsonTable(Renderer):
         scripts
         </body>
         """
-        book_uuid = 'book-' + _generate_uuid()
+        book_uuid = _generate_uuid() + '-book'
         if not embed:
             self._render_html_header(**keywords)
         tabs = '<ul class="tab">\n'
@@ -49,13 +49,13 @@ class HandsonTable(Renderer):
         scripts += common
         uids = []
         for sheet in book:
-            uid = _generate_uuid()
-            tabs += html.BOOK_TAB.format(sheet.name, uid, book_uuid)
-            divs += html.BOOK_DIV.format(book_uuid, uid)
-            scripts += html.BOOK_SHEET % (uid, json.dumps(sheet.array))
-            uids.append(uid)
+            sheet_uid = _generate_uuid()
+            tabs += html.BOOK_TAB.format(sheet.name, sheet_uid, book_uuid)
+            divs += html.BOOK_DIV.format(book_uuid, sheet_uid)
+            scripts += html.BOOK_SHEET % (sheet_uid, json.dumps(sheet.array))
+            uids.append(sheet_uid)
         tabs += '</ul>\n'
-        scripts += "activateFirst('%s', '%s-sheet');\n" % (book_uuid, uids[0])
+        scripts += "  activateFirst('%s', '%s-sheet');\n" % (book_uuid, uids[0])
         scripts += '</script>\n'
         table = tabs + divs + html.BOOK_SCRIPTS + scripts
         self._stream.write(table)
