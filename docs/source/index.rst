@@ -12,7 +12,7 @@
 Introduction
 --------------------------------------------------------------------------------
 
-**pyexcel-handsontable** renders :class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a handsontable in your web page.
+**pyexcel-handsontable** renders :class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a `handsontable <https://handsontable.com>`_ in your web page.
 As long as you have a browser, you could view the data. However, please note
 that this library does not aim to replace any current excel softwares, such
 as Micorsoft Office. But it aims to extends the capability of a
