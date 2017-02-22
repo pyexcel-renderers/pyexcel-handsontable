@@ -15,3 +15,7 @@ targets:
   - test.bat: test.sh.jj2
   - .gitignore: .gitignore.jj2
   - "pyexcel_handsontable/htmlwidgets/css.py": "handsontable/css.py"
+  - "docs/source/index.rst": "docs/source/index.rst"
+  - "docs/source/conf.py": "docs/source/conf.py.jj2"
+  - "tests/fixtures/book.handsontable.html": "tests/fixtures/book.handsontable.html"
+  - "tests/fixtures/sheet_rendering.html": "tests/fixtures/sheet_rendering.html"

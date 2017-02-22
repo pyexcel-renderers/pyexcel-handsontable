@@ -8,24 +8,6 @@ import pyexcel_handsontable.htmlwidgets as html
 class HandsonTable(Renderer):
     file_types = ('handsontable',)
 
-    def _render_html_header(self, **keywords):
-        self._stream.write('<html><head>')
-        if 'css_url' in keywords:
-            css = keywords.pop('css_url')
-        else:
-            css = html.CSS_URL
-        if 'js_url' in keywords:
-            js = keywords.pop('js_url')
-        else:
-            js = html.JS_URL
-        self._stream.write(html.HANDSON_FILES % (css, js))
-        self._stream.write(html.BOOK_STYLE)
-        self._stream.write('</head><body>')
-
-    def render_sheet(self, sheet, embed=False, **keywords):
-        book = [sheet]
-        self.render_book(book, embed=embed, **keywords)
-
     def render_book(self, book, embed=False, **keywords):
         """
         Render the book data in handsontable
@@ -55,12 +37,31 @@ class HandsonTable(Renderer):
             scripts += html.BOOK_SHEET % (sheet_uid, json.dumps(sheet.array))
             uids.append(sheet_uid)
         tabs += '</ul>\n'
-        scripts += "  activateFirst('%s', '%s-sheet');\n" % (book_uuid, uids[0])
+        scripts += "  activateFirst('%s', '%s-sheet');\n" % (book_uuid,
+                                                             uids[0])
         scripts += '</script>\n'
         table = tabs + divs + html.BOOK_SCRIPTS + scripts
         self._stream.write(table)
         if not embed:
             self._stream.write('</body></html>')
+
+    def render_sheet(self, sheet, embed=False, **keywords):
+        book = [sheet]
+        self.render_book(book, embed=embed, **keywords)
+
+    def _render_html_header(self, **keywords):
+        self._stream.write('<html><head>')
+        if 'css_url' in keywords:
+            css = keywords.pop('css_url')
+        else:
+            css = html.CSS_URL
+        if 'js_url' in keywords:
+            js = keywords.pop('js_url')
+        else:
+            js = html.JS_URL
+        self._stream.write(html.HANDSON_FILES % (css, js))
+        self._stream.write(html.BOOK_STYLE)
+        self._stream.write('</head><body>')
 
 
 def _generate_uuid():

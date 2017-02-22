@@ -12,12 +12,24 @@ pyexcel-handsontable - Let you focus on data, instead of file formats
    :target: http://pyexcel-handsontable.readthedocs.org/en/latest/
 
 
-The sphinx library uses pyexcel to read an excel files and renders into an excel-alike sheet in your sphinx documentation. The excel file formats are:
+**pyexcel-handsontable** renders :class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a handsontable in your web page.
+As long as you have a browser, you could view the data. However, please note
+that this library does not aim to replace any current excel softwares, such
+as Micorsoft Office. But it aims to extends the capability of a
+Python user/developer in viewing plain data.
 
-   #. csv, tsv, csvz, tsvz
-   #. xls, xlsx, xlsm
-   #. ods
+Main features:
 
+#. transform your excel sheets into excel alike html file.
+#. embed your excel sheets into your web page
+
+Here is one liner to use it with pyexcel:
+
+.. code-block:: python
+
+    import pyexcel as p
+
+    p.save_as(file_name='your.xls', dest_file_name='your.handsontable')
 
 
 
@@ -93,6 +105,22 @@ On Linux/Unix systems, please launch your tests like this::
 On Windows systems, please issue this command::
 
     > test.bat
+
+
+Update styles
+--------------------
+
+`styles/style.scss` control the look and feel of the frame. In order to view the changes
+in that file, you will need to compile, moban and install it. Here is the sequence
+of commands::
+
+    $ make css
+	$ moban
+	$ python setup.py install
+	$ make -C demo
+
+Then please open handsontable.html from demo directory.
+
 
 License
 ================================================================================

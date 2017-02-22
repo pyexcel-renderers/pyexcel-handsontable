@@ -4,10 +4,24 @@
 {%endblock%}
 
 {%block features %}
-The sphinx library uses pyexcel to read an excel files and renders into an excel-alike sheet in your sphinx documentation. The excel file formats are:
+{%include "handsontable.rst.jj2" %}
+{%endblock%}
 
-   #. csv, tsv, csvz, tsvz
-   #. xls, xlsx, xlsm
-   #. ods
+
+{%block custom_guide %}
+
+Update styles
+--------------------
+
+`styles/style.scss` control the look and feel of the frame. In order to view the changes
+in that file, you will need to compile, moban and install it. Here is the sequence
+of commands::
+
+    $ make css
+	$ moban
+	$ python setup.py install
+	$ make -C demo
+
+Then please open handsontable.html from demo directory.
 
 {%endblock%}

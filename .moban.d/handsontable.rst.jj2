@@ -1,0 +1,18 @@
+**{{name}}** renders :class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a handsontable in your web page.
+As long as you have a browser, you could view the data. However, please note
+that this library does not aim to replace any current excel softwares, such
+as Micorsoft Office. But it aims to extends the capability of a
+Python user/developer in viewing plain data.
+
+Main features:
+
+#. transform your excel sheets into excel alike html file.
+#. embed your excel sheets into your web page
+
+Here is one liner to use it with pyexcel:
+
+.. code-block:: python
+
+    import pyexcel as p
+
+    p.save_as(file_name='your.xls', dest_file_name='your.handsontable')

@@ -1,5 +1,6 @@
 import pyexcel
-b=pyexcel.Book()
-b+=pyexcel.Sheet([[1]])
-b+=pyexcel.Sheet([[2]])
-b.save_as('abc.handsontable', js_url='handsontable.full.min.js', css_url='handsontable.full.min.css')
+
+book = pyexcel.get_book(file_name="census.xls", skip_hidden_sheets=False)
+book.save_as('demo.handsontable',
+             js_url='handsontable.full.min.js',
+             css_url='handsontable.full.min.css')
