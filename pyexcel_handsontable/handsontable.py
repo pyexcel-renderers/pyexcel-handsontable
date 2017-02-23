@@ -6,7 +6,7 @@ import pyexcel_handsontable.htmlwidgets as html
 
 
 class HandsonTable(Renderer):
-    file_types = ('handsontable',)
+    file_types = ('handsontable.html',)
 
     def render_book(self, book, embed=False, **keywords):
         """
