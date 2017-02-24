@@ -100,7 +100,7 @@ Although `nose` and `doctest` are both used in code testing, it is adviable that
 
 On Linux/Unix systems, please launch your tests like this::
 
-    $ make test
+    $ make
 
 On Windows systems, please issue this command::
 
@@ -115,9 +115,9 @@ in that file, you will need to compile, moban and install it. Here is the sequen
 of commands::
 
     $ make css
-	$ moban
-	$ python setup.py install
-	$ make -C demo
+    $ moban
+    $ python setup.py install
+    $ make -C demo
 
 Then please open handsontable.html from demo directory.
 

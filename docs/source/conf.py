@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+DESCRIPTION = (
+    'A plugin to present data in handsontable in html pages' +
+    ''
+)
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
@@ -38,6 +42,6 @@ texinfo_documents = [
     ('index', 'pyexcel-handsontable',
      'pyexcel-handsontable Documentation',
      'Onni Software Ltd.', 'pyexcel-handsontable',
-     'A plugin to present data in handsontable in html pages',
+     DESCRIPTION,
      'Miscellaneous'),
 ]
