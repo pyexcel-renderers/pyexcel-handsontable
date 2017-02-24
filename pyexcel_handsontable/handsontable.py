@@ -5,6 +5,14 @@ from pyexcel.renderers.factory import Renderer
 import pyexcel_handsontable.htmlwidgets as html
 
 
+DEFAULTS = dict(
+    colHeaders=True,
+    rowHeaders=True,
+    preventOverflow="hornizontal",
+    readOnly=True
+)
+
+
 class HandsonTable(Renderer):
     file_types = ('handsontable.html',)
 
@@ -27,7 +35,9 @@ class HandsonTable(Renderer):
         tabs = '<ul class="tab">\n'
         divs = ''
         scripts = '<script>\n'
-        common = html.BOOK_COMMON % (json.dumps(keywords))
+        common = html.BOOK_COMMON % (
+            json.dumps(DEFAULTS),
+            json.dumps(keywords))
         scripts += common
         uids = []
         for sheet in book:

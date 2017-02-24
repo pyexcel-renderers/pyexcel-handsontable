@@ -55,11 +55,7 @@ function activateFirst(bookId, firstTab) {
 
 BOOK_COMMON = """
 // BOOK_COMMON
-  var defaults = {
-    colHeaders: true,
-    rowHeaders: true,
-    preventOverflow: "hornizontal"
-  };
+  var defaults = %s;
   var myconfig = %s;
 """
 

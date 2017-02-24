@@ -13,7 +13,7 @@ Please install dependencies::
 
 And then issue::
 
-    $ make
+    $ python demo.py
 
 Please use your browser and open handsontable.html
 
