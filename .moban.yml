@@ -14,6 +14,7 @@ targets:
   - test.sh: test.sh.jj2
   - test.bat: test.sh.jj2
   - .gitignore: .gitignore.jj2
+  - .travis.yml: travis.yml.jj2
   - "pyexcel_handsontable/htmlwidgets/css.py": "handsontable/css.py"
   - "docs/source/index.rst": "docs/source/index.rst"
   - "docs/source/conf.py": "docs/source/conf.py.jj2"

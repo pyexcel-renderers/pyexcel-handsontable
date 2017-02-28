@@ -11,12 +11,20 @@ pyexcel-handsontable - Let you focus on data, instead of file formats
 .. image:: https://readthedocs.org/projects/pyexcel-handsontable/badge/?version=latest
    :target: http://pyexcel-handsontable.readthedocs.org/en/latest/
 
+Known constraints
+==================
 
-**pyexcel-handsontable** renders :class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a `handsontable <https://handsontable.com>`_ in your web page.
-As long as you have a browser, you could view the data. However, please note
+Fonts, colors and charts are not supported.
+
+**pyexcel-handsontable** is a rendering plugin to
+`pyexcel <http://pyexcel.readthedocs.org/en/latest>`_  and renders
+:class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a
+`handsontable <https://handsontable.com>`_ in your web page. As long as you
+have a browser, you could view the data. However, please note
 that this library does not aim to replace any current excel softwares, such
 as Micorsoft Office. But it aims to extends the capability of a
 Python user/developer in viewing plain data.
+
 
 Main features:
 

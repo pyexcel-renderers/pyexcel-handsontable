@@ -12,11 +12,15 @@
 Introduction
 --------------------------------------------------------------------------------
 
-**pyexcel-handsontable** renders :class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a `handsontable <https://handsontable.com>`_ in your web page.
-As long as you have a browser, you could view the data. However, please note
+**pyexcel-handsontable** is a rendering plugin to
+`pyexcel <http://pyexcel.readthedocs.org/en/latest>`_  and renders
+:class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a
+`handsontable <https://handsontable.com>`_ in your web page. As long as you
+have a browser, you could view the data. However, please note
 that this library does not aim to replace any current excel softwares, such
 as Micorsoft Office. But it aims to extends the capability of a
 Python user/developer in viewing plain data.
+
 
 Main features:
 
@@ -31,6 +35,10 @@ Here is one liner to use it with pyexcel:
 
     p.save_as(file_name='your.xls', dest_file_name='your.handsontable')
 
+Known constraints
+==================
+
+Fonts, colors and charts are not supported.
 
 Installation
 --------------------------------------------------------------------------------
@@ -49,6 +57,30 @@ or clone it and install it:
     $ git clone http://github.com/pyexcel/pyexcel-handsontable.git
     $ cd pyexcel-handsontable
     $ python setup.py install
+
+
+Rendering Options
+--------------------------------------------------------------------------------
+
+You can pass the following options to :meth:`~pyexcel.Sheet.save_as` and
+:meth:`~pyexcel.Book.save_as`. The same options are applicable to
+pyexcel's signature functions, but please remember to add 'dest_' prefix. 
+
+**js_url** The default url for handsontable javascript file points to cdnjs
+version 0.31.0. You can replace it with your custom url
+
+**css_url** The default url for handsontable style sheet points to cdnjs
+version 0.31.0. You can replace it with your custom url
+
+**embed** If it is set true, the resulting html will only contain a portion
+of HTML without the HTML header. And it is expected that you, as the
+developer to provide the necessary HTML header in your web page.
+
+What's more, you could apply
+`all handsontable's options <https://docs.handsontable.com/pro/1.10.0/Options.html>`_
+to the rendering too. for example, 'readOnly'
+was set to `True` as default in this library. In the demo, 'readOnly' was
+overridden as `False`.
 
 
 Embed Setup
@@ -77,3 +109,8 @@ Then pass on `embed=True` to pyexcel signature functions. It is as simple as tha
 
 .. note::
    For latest handsontable releases, please visit `cdnjs <https://cdnjs.com/libraries/handsontable>`_
+
+License
+================================================================================
+
+New BSD License
