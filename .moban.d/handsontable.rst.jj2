@@ -19,4 +19,7 @@ Here is one liner to use it with pyexcel:
 
     import pyexcel as p
 
-    p.save_as(file_name='your.xls', dest_file_name='your.handsontable')
+    p.save_as(file_name='your.xls', dest_file_name='your.handsontable.html')
+
+
+Please remember to give this file suffix always: **handsontable.html**. It is because `handsontable.html` triggers this plugin in pyexcel.

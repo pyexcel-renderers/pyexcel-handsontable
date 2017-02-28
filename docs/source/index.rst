@@ -33,7 +33,10 @@ Here is one liner to use it with pyexcel:
 
     import pyexcel as p
 
-    p.save_as(file_name='your.xls', dest_file_name='your.handsontable')
+    p.save_as(file_name='your.xls', dest_file_name='your.handsontable.html')
+
+
+Please remember to give this file suffix always: **handsontable.html**. It is because `handsontable.html` triggers this plugin in pyexcel.
 
 Known constraints
 ==================
@@ -62,8 +65,8 @@ or clone it and install it:
 Rendering Options
 --------------------------------------------------------------------------------
 
-You can pass the following options to :meth:`~pyexcel.Sheet.save_as` and
-:meth:`~pyexcel.Book.save_as`. The same options are applicable to
+You can pass the following options to :meth:`pyexcel.Sheet.save_as` and
+:meth:`pyexcel.Book.save_as`. The same options are applicable to
 pyexcel's signature functions, but please remember to add 'dest_' prefix. 
 
 **js_url** The default url for handsontable javascript file points to cdnjs

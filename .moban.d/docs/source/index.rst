@@ -16,8 +16,8 @@ Installation
 Rendering Options
 --------------------------------------------------------------------------------
 
-You can pass the following options to :meth:`~pyexcel.Sheet.save_as` and
-:meth:`~pyexcel.Book.save_as`. The same options are applicable to
+You can pass the following options to :meth:`pyexcel.Sheet.save_as` and
+:meth:`pyexcel.Book.save_as`. The same options are applicable to
 pyexcel's signature functions, but please remember to add 'dest_' prefix. 
 
 **js_url** The default url for handsontable javascript file points to cdnjs
