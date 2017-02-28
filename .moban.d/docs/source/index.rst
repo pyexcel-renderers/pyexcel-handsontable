@@ -3,7 +3,7 @@
 Introduction
 --------------------------------------------------------------------------------
 
-{%include "handsontable.rst.jj2"%}
+{%include "handsontable/handsontable.rst.jj2"%}
 
 {%include "constraints.rst.jj2"%}
 

@@ -2,7 +2,7 @@
 
 
 {%block features %}
-{%include "handsontable.rst.jj2" %}
+{%include "handsontable/handsontable.rst.jj2" %}
 {%endblock%}
 
 
