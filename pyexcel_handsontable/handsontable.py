@@ -32,7 +32,11 @@ class HandsonTable(Renderer):
         book_uuid = _generate_uuid() + '-book'
         if not embed:
             self._render_html_header(**keywords)
-        tabs = '<ul class="tab">\n'
+        width = keywords.get('width', None)
+        if width:
+            tabs = '<ul class="tab" style="width:%spx">' % width
+        else:
+            tabs = '<ul class="tab">\n'
         divs = ''
         scripts = '<script>\n'
         common = html.BOOK_COMMON % (
