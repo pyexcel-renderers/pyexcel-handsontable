@@ -27,6 +27,8 @@ Main features:
 #. transform your excel sheets into excel alike html file.
 #. embed your excel sheets into your web page
 
+.. image:: https://github.com/pyexcel/pyexcel-handsontable/blob/master/demo/screenshot.png
+
 Here is one liner to use it with pyexcel:
 
 .. code-block:: python
