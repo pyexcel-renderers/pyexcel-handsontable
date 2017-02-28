@@ -6,4 +6,4 @@ release: 0.0.1
 dependencies:
   - pyexcel>=0.4.4
 exclude_doctest: true
-description: A plugin to present data in handsontable in html pages
+description: A pyexcel plugin to render data as handsontable in html pages

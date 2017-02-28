@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 DESCRIPTION = (
-    'A plugin to present data in handsontable in html pages' +
+    'A pyexcel plugin to render data as handsontable in html pages' +
     ''
 )
 extensions = [

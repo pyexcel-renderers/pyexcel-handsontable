@@ -14,7 +14,7 @@ VERSION = '0.0.1'
 EMAIL = 'wangc_2011 (at) hotmail.com'
 LICENSE = 'New BSD'
 DESCRIPTION = (
-    'A plugin to present data in handsontable in html pages' +
+    'A pyexcel plugin to render data as handsontable in html pages' +
     ''
 )
 KEYWORDS = [
