@@ -55,8 +55,7 @@ function activateFirst(bookId, firstTab) {
 
 BOOK_COMMON = """
 // BOOK_COMMON
-  var defaults = %s;
-  var myconfig = %s;
+  var config = %s;
 """
 
 BOOK_SHEET = """
@@ -65,7 +64,6 @@ BOOK_SHEET = """
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = %s;
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  config["data"] = mydata;
+  new Handsontable(pyexcelElement, config);
 """

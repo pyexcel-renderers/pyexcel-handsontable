@@ -38,16 +38,14 @@ function activateFirst(bookId, firstTab) {
 <script>
 
 // BOOK_COMMON
-  var defaults = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
-  var myconfig = {};
+  var config = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
 
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#1");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[1]];
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  config["data"] = mydata;
+  new Handsontable(pyexcelElement, config);
   activateFirst('1-book', '1-sheet');
 </script>

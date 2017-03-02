@@ -66,35 +66,31 @@ function activateFirst(bookId, firstTab) {
 <script>
 
 // BOOK_COMMON
-  var defaults = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
-  var myconfig = {};
+  var config = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
 
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#2");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[1]];
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  config["data"] = mydata;
+  new Handsontable(pyexcelElement, config);
 
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#3");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[2]];
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  config["data"] = mydata;
+  new Handsontable(pyexcelElement, config);
 
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#4");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[3]];
-  var actualconfig = Object.assign({}, defaults, myconfig);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  config["data"] = mydata;
+  new Handsontable(pyexcelElement, config);
   activateFirst('1-book', '2-sheet');
 </script>
 </body></html>

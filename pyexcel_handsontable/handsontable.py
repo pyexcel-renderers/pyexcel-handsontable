@@ -39,9 +39,11 @@ class HandsonTable(Renderer):
             tabs = '<ul class="tab">\n'
         divs = ''
         scripts = '<script>\n'
-        common = html.BOOK_COMMON % (
-            json.dumps(DEFAULTS),
-            json.dumps(keywords))
+        config = {}
+        config.update(DEFAULTS)
+        config.update(keywords)
+
+        common = html.BOOK_COMMON % (_dump_dict(config))
         scripts += common
         uids = []
         for sheet in book:
@@ -80,3 +82,10 @@ class HandsonTable(Renderer):
 
 def _generate_uuid():
     return 'pyexcel-' + uuid.uuid4().hex
+
+
+def _dump_dict(adict):
+    """
+    This function is made for testing purpose
+    """
+    return json.dumps(adict)

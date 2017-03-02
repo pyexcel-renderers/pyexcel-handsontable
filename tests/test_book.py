@@ -1,15 +1,17 @@
 from mock import patch
 import pyexcel
-from unittest import TestCase
+from mytestwrapper import MyTestCase, DEFAULT_CONFIG
 
 
-class TestBook(TestCase):
+class TestBook(MyTestCase):
     def setUp(self):
         self.maxDiff = None
 
     @patch('pyexcel_handsontable.handsontable._generate_uuid')
-    def test_book_renderring(self, fake_uuid):
+    @patch('pyexcel_handsontable.handsontable._dump_dict')
+    def test_book_renderring(self, dump_dict, fake_uuid):
         fake_uuid.side_effect = ['1', '2', '3', '4']
+        dump_dict.return_value = DEFAULT_CONFIG
         book = pyexcel.Book()
         book += pyexcel.Sheet([[1]])
         book += pyexcel.Sheet([[2]])
@@ -17,4 +19,4 @@ class TestBook(TestCase):
         actual = book.handsontable_html
         with open('tests/fixtures/book.handsontable.html', 'r') as f:
             expected = f.read().strip('\n')
-            self.assertMultiLineEqual(actual, expected)
+            self.customAssertMultiLineEqual(expected, actual)
