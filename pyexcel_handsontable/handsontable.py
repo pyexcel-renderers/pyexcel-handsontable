@@ -1,7 +1,7 @@
 import uuid
 import json
 
-from pyexcel.renderers.factory import Renderer
+from pyexcel.renderers import Renderer
 import pyexcel_handsontable.htmlwidgets as html
 
 
