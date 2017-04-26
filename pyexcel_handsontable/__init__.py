@@ -10,8 +10,8 @@
 from pyexcel.internal.common import PyexcelPluginList
 
 
-__pyexcel_plugins__ = PyexcelPluginList(__name__).add_a_renderer(
-    submodule='handsontable',
+PyexcelPluginList(__name__).add_a_renderer(
+    submodule='handsontable.HandsonTable',
     file_types=['handsontable.html'],
     stream_type='string'
 )
