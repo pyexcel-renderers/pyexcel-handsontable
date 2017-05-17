@@ -17,6 +17,7 @@ body {
 	margin: 2 0 0 0;
 }
 .tab {
+	margin-bottom: 0px !important;
 	text-align: center;
 	list-style: none;
 	padding: 0 0 0 10px;
@@ -28,6 +29,7 @@ body {
 	position: relative;
 	margin: 0;
 	li {
+		margin-left: 0px !important;
 		float: left;
 		height: 24px;
 		border: 1px solid $color_silver_chalice_approx;

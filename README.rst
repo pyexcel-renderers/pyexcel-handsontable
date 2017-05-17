@@ -2,11 +2,14 @@
 pyexcel-handsontable - Let you focus on data, instead of file formats
 ================================================================================
 
+.. image:: https://raw.githubusercontent.com/pyexcel/pyexcel.github.io/master/images/patreon.png
+   :target: https://www.patreon.com/pyexcel
+
 .. image:: https://api.travis-ci.org/pyexcel/pyexcel-handsontable.svg?branch=master
    :target: http://travis-ci.org/pyexcel/pyexcel-handsontable
 
 .. image:: https://codecov.io/github/pyexcel/pyexcel-handsontable/coverage.png
-    :target: https://codecov.io/github/pyexcel/pyexcel-handsontable
+   :target: https://codecov.io/github/pyexcel/pyexcel-handsontable
 
 .. image:: https://readthedocs.org/projects/pyexcel-handsontable/badge/?version=latest
    :target: http://pyexcel-handsontable.readthedocs.org/en/latest/
@@ -59,7 +62,7 @@ or clone it and install it:
 
 .. code-block:: bash
 
-    $ git clone http://github.com/pyexcel/pyexcel-handsontable.git
+    $ git clone https://github.com/pyexcel/pyexcel-handsontable.git
     $ cd pyexcel-handsontable
     $ python setup.py install
 
@@ -139,3 +142,10 @@ License
 ================================================================================
 
 New BSD License
+
+Support the project
+================================================================================
+
+If your company has embedded pyexcel and its components into a revenue generating
+product, please `support me on patreon <https://www.patreon.com/pyexcel>`_ to
+maintain the project and develop it further.
