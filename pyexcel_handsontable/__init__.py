@@ -7,7 +7,7 @@
     :copyright: (c) 2016-2017 by Onni Software Ltd.
     :license: New BSD License, see LICENSE for further details
 """
-from lml.registry import PluginList, PluginInfo
+from lml.registry import PluginInfoList, PluginInfo
 
 
 class MyPluginInfo(PluginInfo):
@@ -18,7 +18,7 @@ class MyPluginInfo(PluginInfo):
             yield file_type
 
 
-PluginList(__name__)._add_a_plugin(
+PluginInfoList(__name__).add_a_plugin_instance(
     MyPluginInfo(
         'renderer',
         '%s.handsontable.HandsonTable' % __name__,
