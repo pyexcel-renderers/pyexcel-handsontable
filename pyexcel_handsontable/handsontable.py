@@ -14,7 +14,6 @@ DEFAULTS = dict(
 
 
 class HandsonTable(Renderer):
-    file_types = ('handsontable.html',)
 
     def render_book(self, book, embed=False, **keywords):
         """
