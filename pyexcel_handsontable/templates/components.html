@@ -1,0 +1,24 @@
+{%macro sheet_tab(name, sheet_uid, book_uid)%}
+<!-- BOOK_TAB -->
+<li id='{{sheet_uid}}-sheet-li' class="{{book_uid}}-li">
+<a href="javascript:void(0)" onClick="openTab(event, '{{book_uid}}', '{{sheet_uid}}-sheet')">{{name}}</a>
+</li>
+{%endmacro%}
+
+{%macro sheet_div(book_uid, sheet_uid)%}
+<!-- BOOK_DIV -->
+<div id="{{sheet_uid}}-sheet" class="tabcontent {{book_uid}}">
+  <div id="{{sheet_uid}}"></div>
+</div>
+{%endmacro%}
+
+{%macro sheet_script(sheet_uid, content)%}
+// BOOK_SHEET
+  var pyexcelElement = document.querySelector("#{{sheet_uid}}");
+  var pyexcelElementContainer = pyexcelElement.parentNode;
+
+  var mydata = {{content}};
+  var actualconfig = Object.assign({}, config);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
+{%endmacro%}

@@ -40,6 +40,7 @@ CLASSIFIERS = [
 
 INSTALL_REQUIRES = [
     'pyexcel>=0.5.0',
+    'jinja2',
 ]
 
 

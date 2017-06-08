@@ -1,0 +1,42 @@
+{% from "components.html" import sheet_tab, sheet_div, sheet_script %}
+
+<ul class="tab" {% if width %}style="width:{{width}}px"{% endif %}>
+{% for sheet in sheets %}
+{{ sheet_tab(sheet.name, sheet.uid, uid) }}
+{% endfor %}
+</ul>
+{% for sheet in sheets %}
+{{ sheet_div(uid, sheet.uid) }}
+{% endfor %}
+
+<!-- BOOK_SCRIPTS -->
+<script>
+var config = {{config}};
+function openTab(evt, bookId, tabId) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName(bookId);
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName(bookId+"-li");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabId).style.display = "block";
+    document.getElementById(tabId+"-li").className += " active";
+}
+function activateFirst(bookId, firstTab) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName(bookId);
+    for (i = 1; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    document.getElementById(firstTab+'-li').className += " active";
+}
+{% for sheet in sheets %}
+{{ sheet_script(sheet.uid, sheet.content) }}
+{% endfor %}
+activateFirst('{{uid}}', '{{active}}-sheet');
+					
+</script>
+

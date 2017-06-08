@@ -1,10 +1,14 @@
+import os
 import uuid
 import json
 
 from pyexcel.renderer import Renderer
-import pyexcel_handsontable.htmlwidgets as html
+from jinja2 import Environment, FileSystemLoader
 
 
+HOST = "https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.31.0/"
+JS_URL = HOST + "handsontable.full.min.js"
+CSS_URL = HOST + "handsontable.full.min.css"
 DEFAULTS = dict(
     colHeaders=True,
     rowHeaders=True,
@@ -14,69 +18,52 @@ DEFAULTS = dict(
 
 
 class HandsonTable(Renderer):
+    def __init__(self, file_type):
+        Renderer.__init__(self, file_type)
+        loader = FileSystemLoader(_get_resource_dir('templates'))
+        self._env = Environment(loader=loader,
+                                keep_trailing_newline=True,
+                                trim_blocks=True,
+                                lstrip_blocks=True)
 
-    def render_book(self, book, embed=False, **keywords):
+    def render_book(self, book, embed=False,
+                    css_url=CSS_URL, js_url=JS_URL,
+                    **keywords):
         """
         Render the book data in handsontable
-
-        <html><header>
-        header
-        </header><body>
-        tabs
-        divs
-        common
-        scripts
-        </body>
         """
-        book_uuid = _generate_uuid() + '-book'
-        if not embed:
-            self._render_html_header(**keywords)
-        width = keywords.get('width', None)
-        if width:
-            tabs = '<ul class="tab" style="width:%spx">' % width
-        else:
-            tabs = '<ul class="tab">\n'
-        divs = ''
-        scripts = '<script>\n'
         config = {}
         config.update(DEFAULTS)
         config.update(keywords)
-
-        common = html.BOOK_COMMON % (_dump_dict(config))
-        scripts += common
+        book_uuid = _generate_uuid() + '-book'
+        book_data = {
+            'width': keywords.get('width', None),
+            'sheets': [],
+            'uid': book_uuid,
+            'css_url': css_url,
+            'js_url': js_url,
+            'config': _dump_dict(config)
+        }
         uids = []
         for sheet in book:
             sheet_uid = _generate_uuid()
-            tabs += html.BOOK_TAB.format(sheet.name, sheet_uid, book_uuid)
-            divs += html.BOOK_DIV.format(book_uuid, sheet_uid)
-            scripts += html.BOOK_SHEET % (sheet_uid, json.dumps(sheet.array))
+            sheet = {
+                'uid': sheet_uid,
+                'name': sheet.name,
+                'content': json.dumps(sheet.array)
+            }
+            book_data['sheets'].append(sheet)
             uids.append(sheet_uid)
-        tabs += '</ul>\n'
-        scripts += "  activateFirst('%s', '%s-sheet');\n" % (book_uuid,
-                                                             uids[0])
-        scripts += '</script>\n'
-        table = tabs + divs + html.BOOK_SCRIPTS + scripts
-        self._stream.write(table)
-        if not embed:
-            self._stream.write('</body></html>')
+        book_data['active'] = uids[0]
+        if embed:
+            template = self._env.get_template('embed.html')
+        else:
+            template = self._env.get_template('full.html')
+        self._stream.write(template.render(**book_data))
 
     def render_sheet(self, sheet, embed=False, **keywords):
         book = [sheet]
         self.render_book(book, embed=embed, **keywords)
-
-    def _render_html_header(self, **keywords):
-        self._stream.write('<html><head>')
-        if 'css_url' in keywords:
-            css = keywords.pop('css_url')
-        else:
-            css = html.CSS_URL
-        if 'js_url' in keywords:
-            js = keywords.pop('js_url')
-        else:
-            js = html.JS_URL
-        self._stream.write(html.HANDSON_FILES % (css, js))
-        self._stream.write(html.BOOK_STYLE)
-        self._stream.write('</head><body>')
 
 
 def _generate_uuid():
@@ -88,3 +75,9 @@ def _dump_dict(adict):
     This function is made for testing purpose
     """
     return json.dumps(adict)
+
+
+def _get_resource_dir(folder):
+    current_path = os.path.dirname(__file__)
+    resource_path = os.path.join(current_path, folder)
+    return resource_path
