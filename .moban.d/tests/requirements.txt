@@ -1,6 +1,5 @@
 {% extends 'tests/requirements.txt.jj2' %}
 {%block extras %}
-mock
 pyexcel
 pyexcel-xls
 pyscss
