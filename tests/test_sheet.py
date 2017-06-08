@@ -16,7 +16,7 @@ class TestSheet(MyTestCase):
         s = pyexcel.Sheet([[1]])
         actual = s.handsontable_html
         with open('tests/fixtures/sheet_rendering.html', 'r') as f:
-            expected = f.read().strip('\n')
+            expected = f.read()
             self.customAssertMultiLineEqual(expected, actual)
 
     @patch('pyexcel_handsontable.handsontable._generate_uuid')

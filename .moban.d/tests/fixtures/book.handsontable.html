@@ -2,12 +2,12 @@
 <!-- HANDSON_FILES -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.31.0/handsontable.full.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.31.0/handsontable.full.min.js"></script>
-
 <style>
 {%include "handsontable/style.css.jj2"%}
 </style>
-</head><body><ul class="tab">
+</head><body>
 
+<ul class="tab" >
 <!-- BOOK_TAB -->
 <li id='2-sheet-li' class="1-book-li">
 <a href="javascript:void(0)" onClick="openTab(event, '1-book', '2-sheet')">pyexcel sheet</a>
@@ -22,8 +22,8 @@
 <li id='4-sheet-li' class="1-book-li">
 <a href="javascript:void(0)" onClick="openTab(event, '1-book', '4-sheet')">pyexcel sheet_2</a>
 </li>
-</ul>
 
+</ul>
 <!-- BOOK_DIV -->
 <div id="2-sheet" class="tabcontent 1-book">
   <div id="2"></div>
@@ -39,8 +39,10 @@
   <div id="4"></div>
 </div>
 
+
 <!-- BOOK_SCRIPTS -->
 <script>
+var config = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
 function openTab(evt, bookId, tabId) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName(bookId);
@@ -62,35 +64,36 @@ function activateFirst(bookId, firstTab) {
     }
     document.getElementById(firstTab+'-li').className += " active";
 }
-</script>
-<script>
-
-// BOOK_COMMON
-  var config = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
-
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#2");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[1]];
-  config["data"] = mydata;
-  new Handsontable(pyexcelElement, config);
+  var actualconfig = Object.assign({}, config);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
 
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#3");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[2]];
-  config["data"] = mydata;
-  new Handsontable(pyexcelElement, config);
+  var actualconfig = Object.assign({}, config);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
 
 // BOOK_SHEET
   var pyexcelElement = document.querySelector("#4");
   var pyexcelElementContainer = pyexcelElement.parentNode;
 
   var mydata = [[3]];
-  config["data"] = mydata;
-  new Handsontable(pyexcelElement, config);
-  activateFirst('1-book', '2-sheet');
+  var actualconfig = Object.assign({}, config);
+  actualconfig["data"] = mydata;
+  new Handsontable(pyexcelElement, actualconfig);
+
+activateFirst('1-book', '2-sheet');
+					
 </script>
+
 </body></html>
+	

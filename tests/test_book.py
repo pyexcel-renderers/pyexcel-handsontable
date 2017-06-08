@@ -18,5 +18,5 @@ class TestBook(MyTestCase):
         book += pyexcel.Sheet([[3]])
         actual = book.handsontable_html
         with open('tests/fixtures/book.handsontable.html', 'r') as f:
-            expected = f.read().strip('\n')
+            expected = f.read()
             self.customAssertMultiLineEqual(expected, actual)
