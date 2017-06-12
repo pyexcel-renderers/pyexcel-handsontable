@@ -1,6 +1,7 @@
 import os
 import uuid
 import json
+from datetime import date, datetime
 
 from pyexcel.renderer import Renderer
 from jinja2 import Environment, FileSystemLoader
@@ -42,7 +43,7 @@ class HandsonTable(Renderer):
             'uid': book_uuid,
             'css_url': css_url,
             'js_url': js_url,
-            'config': _dump_dict(config)
+            'config': _dumps(config)
         }
         uids = []
         for sheet in book:
@@ -50,7 +51,7 @@ class HandsonTable(Renderer):
             sheet = {
                 'uid': sheet_uid,
                 'name': sheet.name,
-                'content': json.dumps(sheet.array)
+                'content': _dumps(sheet.array)
             }
             book_data['sheets'].append(sheet)
             uids.append(sheet_uid)
@@ -70,14 +71,25 @@ def _generate_uuid():
     return 'pyexcel-' + uuid.uuid4().hex
 
 
-def _dump_dict(adict):
-    """
-    This function is made for testing purpose
-    """
-    return json.dumps(adict)
-
-
 def _get_resource_dir(folder):
     current_path = os.path.dirname(__file__)
     resource_path = os.path.join(current_path, folder)
     return resource_path
+
+
+class DateTimeEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, date):
+            date_string = obj.strftime('%Y-%m-%d')
+            return date_string
+        if isinstance(obj, datetime):
+            datetime_string = obj.strftime("%Y-%m-%d %H:%M:%S")
+            return datetime_string
+        return json.JSONEncoder.default(self, obj)
+
+
+def _dumps(adict):
+    """
+    This function is made for testing purpose
+    """
+    return json.dumps(adict, cls=DateTimeEncoder)
