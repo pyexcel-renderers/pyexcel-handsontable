@@ -43,7 +43,7 @@ class HandsonTable(Renderer):
             'uid': book_uuid,
             'css_url': css_url,
             'js_url': js_url,
-            'config': _dumps(config)
+            'config': _dump_dict(config)
         }
         uids = []
         for sheet in book:
@@ -88,8 +88,12 @@ class DateTimeEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, obj)
 
 
-def _dumps(adict):
+def _dumps(data):
+    return json.dumps(data, cls=DateTimeEncoder)
+
+
+def _dump_dict(aconfig):
     """
     This function is made for testing purpose
     """
-    return json.dumps(adict, cls=DateTimeEncoder)
+    return _dumps(aconfig)
