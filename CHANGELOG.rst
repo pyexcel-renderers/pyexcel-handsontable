@@ -1,7 +1,7 @@
 Change log
 ===========
 
-0.1.0 - unreleased
+0.1.0 - 19.06.2017
 --------------------------------------------------------------------------------
 
-Initial release
+Initial release. Present your data in handsontable.
