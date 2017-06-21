@@ -9,7 +9,6 @@ targets:
   - setup.py: setup.py
   - requirements.txt: requirements.txt
   - LICENSE: LICENSE.jj2
-  - MANIFEST.in: MANIFEST.in.jj2
   - "tests/requirements.txt": "tests/requirements.txt"
   - test.sh: test.sh.jj2
   - test.bat: test.sh.jj2
