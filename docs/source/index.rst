@@ -14,7 +14,7 @@ Introduction
 
 **pyexcel-handsontable** is a rendering plugin to
 `pyexcel <http://pyexcel.readthedocs.org/en/latest>`_  and renders
-:class:`pyexcel.Sheet` and :class:`pyexcel.Book` into a
+`pyexcel.Sheet` and `pyexcel.Book` into a
 `handsontable <https://handsontable.com>`_ in your web page. As long as you
 have a browser, you could view the data. However, please note
 that this library does not aim to replace any current excel softwares, such
@@ -27,7 +27,7 @@ Main features:
 #. transform your excel sheets into excel alike html file.
 #. embed your excel sheets into your web page
 
-.. image:: https://github.com/pyexcel/pyexcel-handsontable/blob/master/demo/screenshot.png
+.. image:: https://github.com/pyexcel/pyexcel-handsontable/raw/master/demo/screenshot.png
 
 Here is one liner to use it with pyexcel:
 

@@ -1,3 +1,2 @@
 include README.rst
 include CHANGELOG.rst
-include pyexcel_handsontable/templates/*.html
