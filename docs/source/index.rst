@@ -5,7 +5,6 @@
 :Source code: http://github.com/pyexcel/pyexcel-handsontable.git
 :Issues: http://github.com/pyexcel/pyexcel-handsontable/issues
 :License: New BSD License
-:Development: |release|
 :Released: |version|
 :Generated: |today|
 
@@ -36,6 +35,12 @@ Here is one liner to use it with pyexcel:
     import pyexcel as p
 
     p.save_as(file_name='your.xls', dest_file_name='your.handsontable.html')
+
+Alternatively, you can use this library with pyexcel cli module::
+
+
+    $ pip install pyexcel-cli
+	$ pyexcel transcode your.xls your.handsontable.html
 
 
 Please remember to give this file suffix always: **handsontable.html**. It is because `handsontable.html` triggers this plugin in pyexcel.

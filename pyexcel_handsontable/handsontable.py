@@ -1,3 +1,12 @@
+"""
+    pyexcel_handsontable.handsontable
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    Transform pyexcel sheet into a handsontable html
+
+    :copyright: (c) 2016-2017 by Onni Software Ltd.
+    :license: New BSD License, see LICENSE for further details
+"""
 import os
 import uuid
 import json
