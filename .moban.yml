@@ -2,17 +2,17 @@ configuration:
   configuration_dir: "commons/config"
   template_dir:
   - "commons/templates"
+  - "setupmobans/templates"
   - ".moban.d"
   configuration: pyexcel-handsontable.yml
 targets:
   - README.rst: README.rst
   - setup.py: setup.py
   - requirements.txt: requirements.txt
-  - LICENSE: LICENSE.jj2
   - "tests/requirements.txt": "tests/requirements.txt"
-  - test.sh: test.sh.jj2
-  - test.bat: test.sh.jj2
-  - .gitignore: .gitignore.jj2
+  - test.sh: test.script.jj2
+  - test.bat: test.script.jj2
+  - .gitignore: gitignore.jj2
   - .travis.yml: travis.yml.jj2
   - "pyexcel_handsontable/templates/css.html": "handsontable/style.css.jj2"
   - "docs/source/index.rst": "docs/source/index.rst"

@@ -48,6 +48,7 @@ class HandsonTable(Renderer):
         book_uuid = _generate_uuid() + '-book'
         book_data = {
             'width': keywords.get('width', None),
+            'height': keywords.get('height', None),
             'sheets': [],
             'uid': book_uuid,
             'css_url': css_url,
