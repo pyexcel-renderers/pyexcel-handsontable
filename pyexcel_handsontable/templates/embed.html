@@ -1,6 +1,6 @@
 {% from "components.html" import sheet_tab, sheet_div, sheet_script %}
 
-<ul class="tab" {% if width %}style="width:{{width}}px;{%if height%}height:{{height}}px{% endif %}"{% endif %}>
+<ul class="tab" {% if width %}style="width:{{width}}px;"{% endif %}>
 {% for sheet in sheets %}
 {{ sheet_tab(sheet.name, sheet.uid, uid) }}
 {% endfor %}
