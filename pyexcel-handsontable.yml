@@ -4,6 +4,7 @@ nick_name: handsontable
 version: 0.0.2
 current_version: 0.0.2
 release: 0.0.1
+include_doctest: false
 dependencies:
   - pyexcel>=0.5.0
   - jinja2
