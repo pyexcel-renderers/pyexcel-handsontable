@@ -7,7 +7,7 @@
 
 {%macro sheet_div(book_uid, sheet_uid)%}
 <!-- BOOK_DIV -->
-<div id="{{sheet_uid}}-sheet" class="tabcontent {{book_uid}}" style="{% if width %}width:{{width}}px;{%endif%}{% if height %}height:{{height}}px;{%endif%}{% if width or height %}overflow: hidden;{%endif%}">
+<div id="{{sheet_uid}}-sheet" class="tabcontent {{book_uid}}"{% if width %} style="{% if width %}width:{{width}}px;{%endif%}{% if height %}height:{{height}}px;{%endif%}{% if width or height %}overflow: hidden;{%endif%}"{% endif %}>
   <div id="{{sheet_uid}}"></div>
 </div>
 {%endmacro%}
