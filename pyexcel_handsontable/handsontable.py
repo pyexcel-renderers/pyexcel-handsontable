@@ -8,6 +8,7 @@
     :license: New BSD License, see LICENSE for further details
 """
 import os
+import codecs
 import uuid
 import json
 from datetime import date, datetime
@@ -23,7 +24,8 @@ DEFAULTS = dict(
     colHeaders=True,
     rowHeaders=True,
     preventOverflow="hornizontal",
-    readOnly=True
+    readOnly=True,
+    columnSorting=True
 )
 
 
@@ -36,36 +38,34 @@ class HandsonTable(Renderer):
                                 trim_blocks=True,
                                 lstrip_blocks=True)
 
+    def render_book_to_stream(self, file_stream, book,
+                              write_title=True, caption="",
+                              display_length=None,
+                              **keywords):
+        self.set_write_title(write_title)
+        self.set_output_stream(file_stream)
+        book_data = self._parse_book(book, **keywords)
+        __css_file__ = os.path.join(_get_resource_dir('templates'),
+                                    'pyexcel-handsontable',
+                                    'handsontable.min.css')
+        with codecs.open(__css_file__, 'r', 'utf-8') as f:
+            book_data['handsontable_css'] = f.read()
+        template = self._env.get_template('notebook.html')
+        self._stream.write(template.render(**book_data))
+
+    def render_sheet_to_stream(self, file_stream, sheet,
+                               **keywords):
+        self.render_book_to_stream(file_stream, [sheet], **keywords)
+
     def render_book(self, book, embed=False,
                     css_url=CSS_URL, js_url=JS_URL,
                     **keywords):
         """
         Render the book data in handsontable
         """
-        config = {}
-        config.update(DEFAULTS)
-        config.update(keywords)
-        book_uuid = _generate_uuid() + '-book'
-        book_data = {
-            'width': keywords.get('width', None),
-            'height': keywords.get('height', None),
-            'sheets': [],
-            'uid': book_uuid,
-            'css_url': css_url,
-            'js_url': js_url,
-            'config': _dump_dict(config)
-        }
-        uids = []
-        for sheet in book:
-            sheet_uid = _generate_uuid()
-            sheet = {
-                'uid': sheet_uid,
-                'name': sheet.name,
-                'content': _dumps(sheet.array)
-            }
-            book_data['sheets'].append(sheet)
-            uids.append(sheet_uid)
-        book_data['active'] = uids[0]
+        book_data = self._parse_book(book)
+        book_data['css_url'] = css_url
+        book_data['js_url'] = js_url
         if embed:
             template = self._env.get_template('embed.html')
         else:
@@ -75,6 +75,33 @@ class HandsonTable(Renderer):
     def render_sheet(self, sheet, embed=False, **keywords):
         book = [sheet]
         self.render_book(book, embed=embed, **keywords)
+
+    def _parse_book(self, book, **keywords):
+        config = {}
+        config.update(DEFAULTS)
+        config.update(keywords)
+        book_uuid = _generate_uuid() + '-book'
+        book_data = {
+            'width': keywords.get('width', None),
+            'height': keywords.get('height', None),
+            'sheets': [],
+            'uid': book_uuid,
+            'config': _dump_dict(config)
+        }
+        uids = []
+        for sheet in book:
+            sheet_uid = _generate_uuid()
+            handson_sheet = {
+                'uid': sheet_uid,
+                'name': sheet.name,
+                'content': _dumps(sheet.array)
+            }
+            if len(sheet.colnames) > 0:
+                handson_sheet['colHeaders'] = _dump_dict(sheet.colnames)
+            book_data['sheets'].append(handson_sheet)
+            uids.append(sheet_uid)
+        book_data['active'] = uids[0]
+        return book_data
 
 
 def _generate_uuid():

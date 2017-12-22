@@ -20,5 +20,8 @@
   var mydata = {{content}};
   var actualconfig = Object.assign({}, config);
   actualconfig["data"] = mydata;
+  {% if 'colHeaders' in sheet %}
+  actualconfig["colHeaders"] = {{sheet.colHeaders}}
+  {% endif %}
   new Handsontable(pyexcelElement, actualconfig);
 {%endmacro%}
