@@ -2,8 +2,8 @@
 ================================================================================
 
 :Author: C.W.
-:Source code: http://github.com/pyexcel/pyexcel-handsontable.git
-:Issues: http://github.com/pyexcel/pyexcel-handsontable/issues
+:Source code: http://github.com/pyexcel-renderers/pyexcel-handsontable.git
+:Issues: http://github.com/pyexcel-renderers/pyexcel-handsontable/issues
 :License: New BSD License
 :Development: |release|
 :Released: |version|
@@ -54,7 +54,8 @@ Fonts, colors and charts are not supported.
 Installation
 --------------------------------------------------------------------------------
 
-You can install it via pip:
+
+You can install pyexcel-handsontable via pip:
 
 .. code-block:: bash
 
@@ -65,7 +66,7 @@ or clone it and install it:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/pyexcel/pyexcel-handsontable.git
+    $ git clone https://github.com/pyexcel-renderers/pyexcel-handsontable.git
     $ cd pyexcel-handsontable
     $ python setup.py install
 

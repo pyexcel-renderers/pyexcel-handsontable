@@ -5,11 +5,11 @@ pyexcel-handsontable - Let you focus on data, instead of file formats
 .. image:: https://raw.githubusercontent.com/pyexcel/pyexcel.github.io/master/images/patreon.png
    :target: https://www.patreon.com/pyexcel
 
-.. image:: https://api.travis-ci.org/pyexcel/pyexcel-handsontable.svg?branch=master
-   :target: http://travis-ci.org/pyexcel/pyexcel-handsontable
+.. image:: https://travis-ci.org/pyexcel-renderers/pyexcel-handsontable.svg?branch=master
+   :target: http://travis-ci.org/pyexcel-renderers/pyexcel-handsontable
 
-.. image:: https://codecov.io/gh/pyexcel/pyexcel-handsontable/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/pyexcel/pyexcel-handsontable
+.. image:: https://codecov.io/gh/pyexcel-renderers/pyexcel-handsontable/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/pyexcel-renderers/pyexcel-handsontable
 
 .. image:: https://img.shields.io/gitter/room/gitterHQ/gitter.svg
    :target: https://gitter.im/pyexcel/Lobby
@@ -25,7 +25,7 @@ product, please `support me on patreon <https://www.patreon.com/bePatron?u=55376
 maintain the project and develop it further.
 
 If you are an individual, you are welcome to support me too on patreon and for however long
-you feel like to. As a patreon, you will receive
+you feel like. As a patreon, you will receive
 `early access to pyexcel related contents <https://www.patreon.com/pyexcel/posts>`_.
 
 With your financial support, I will be able to invest
@@ -77,7 +77,8 @@ Please remember to give this file suffix always: **handsontable.html**. It is be
 
 Installation
 ================================================================================
-You can install it via pip:
+
+You can install pyexcel-handsontable via pip:
 
 .. code-block:: bash
 
@@ -88,7 +89,7 @@ or clone it and install it:
 
 .. code-block:: bash
 
-    $ git clone https://github.com/pyexcel/pyexcel-handsontable.git
+    $ git clone https://github.com/pyexcel-renderers/pyexcel-handsontable.git
     $ cd pyexcel-handsontable
     $ python setup.py install
 

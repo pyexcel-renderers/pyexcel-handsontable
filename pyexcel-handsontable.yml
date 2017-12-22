@@ -1,5 +1,6 @@
 overrides: "pyexcel.yaml"
 name: "pyexcel-handsontable"
+organisation: pyexcel-renderers
 nick_name: handsontable
 version: 0.0.2
 current_version: 0.0.2
