@@ -25,4 +25,11 @@ PluginInfoChain(__name__).add_a_plugin_instance(
         file_types=['handsontable.html'],
         stream_type='string'
     )
+).add_a_plugin_instance(
+    MyPluginInfo(
+        'renderer',
+        '%s.handsontable.HandsonTableInJupyter' % __name__,
+        file_types=['handsontable'],
+        stream_type='string'
+    )
 )

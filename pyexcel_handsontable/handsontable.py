@@ -11,6 +11,7 @@ import os
 import codecs
 import uuid
 import json
+from functools import partial
 from datetime import date, datetime
 
 from pyexcel.renderer import Renderer
@@ -37,25 +38,6 @@ class HandsonTable(Renderer):
                                 keep_trailing_newline=True,
                                 trim_blocks=True,
                                 lstrip_blocks=True)
-
-    def render_book_to_stream(self, file_stream, book,
-                              write_title=True, caption="",
-                              display_length=None,
-                              **keywords):
-        self.set_write_title(write_title)
-        self.set_output_stream(file_stream)
-        book_data = self._parse_book(book, **keywords)
-        __css_file__ = os.path.join(_get_resource_dir('templates'),
-                                    'pyexcel-handsontable',
-                                    'handsontable.min.css')
-        with codecs.open(__css_file__, 'r', 'utf-8') as f:
-            book_data['handsontable_css'] = f.read()
-        template = self._env.get_template('notebook.html')
-        self._stream.write(template.render(**book_data))
-
-    def render_sheet_to_stream(self, file_stream, sheet,
-                               **keywords):
-        self.render_book_to_stream(file_stream, [sheet], **keywords)
 
     def render_book(self, book, embed=False,
                     css_url=CSS_URL, js_url=JS_URL,
@@ -102,6 +84,44 @@ class HandsonTable(Renderer):
             uids.append(sheet_uid)
         book_data['active'] = uids[0]
         return book_data
+
+
+class HandsonTableInJupyter(HandsonTable):
+    def get_io(self):
+        io = HandsonTable.get_io(self)
+        setattr(io,
+                '_repr_html_',
+                partial(lambda s: s.getvalue(), io))
+        return io
+
+    def render_book_to_stream(self, file_stream, book,
+                              write_title=True, caption="",
+                              display_length=None,
+                              **keywords):
+        self.set_write_title(write_title)
+        self.set_output_stream(file_stream)
+        book_data = self._parse_book(book, **keywords)
+        __css_file__ = os.path.join(_get_resource_dir('templates'),
+                                    'pyexcel-handsontable',
+                                    'handsontable.min.css')
+        with codecs.open(__css_file__, 'r', 'utf-8') as f:
+            book_data['handsontable_css'] = f.read()
+            template = self._env.get_template('notebook.html')
+        self._stream.write(template.render(**book_data))
+
+
+    def render_sheet_to_stream(self, file_stream, sheet,
+                               **keywords):
+        self.render_book_to_stream(file_stream, [sheet], **keywords)
+
+    def render_book(self, book, **keywords):
+        """
+        Render the book data in handsontable
+        """
+        raise NotImplementedError()
+
+    def render_sheet(self, sheet,  **keywords):
+        raise NotImplementedError()
 
 
 def _generate_uuid():
