@@ -109,7 +109,6 @@ class HandsonTableInJupyter(HandsonTable):
             template = self._env.get_template('notebook.html')
         self._stream.write(template.render(**book_data))
 
-
     def render_sheet_to_stream(self, file_stream, sheet,
                                **keywords):
         self.render_book_to_stream(file_stream, [sheet], **keywords)
