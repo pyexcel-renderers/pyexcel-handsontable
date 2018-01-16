@@ -17,7 +17,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 project = u'pyexcel-handsontable'
-copyright = u'2015-2017 Onni Software Ltd.'
+copyright = u'2015-2018 Onni Software Ltd.'
 version = '0.0.1'
 release = '0.0.2'
 exclude_patterns = []

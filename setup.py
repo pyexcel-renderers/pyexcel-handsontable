@@ -13,8 +13,7 @@ VERSION = '0.0.2'
 EMAIL = 'wangc_2011@hotmail.com'
 LICENSE = 'New BSD'
 DESCRIPTION = (
-    'A pyexcel plugin to render data as handsontable in html pages' +
-    ''
+    'A pyexcel plugin to render data as handsontable in html pages'
 )
 URL = 'https://github.com/pyexcel-renderers/pyexcel-handsontable'
 DOWNLOAD_URL = '%s/archive/0.0.1.tar.gz' % URL
