@@ -84,13 +84,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     require([ 'handsontable' ],function(Handsontable){
         var config = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
         // BOOK_SHEET
-  var pyexcelElement = document.querySelector("#1");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
+  var sheetHandle = {};
+  sheetHandle.element = document.querySelector("#1");
 
   var mydata = [[1]];
-  var actualconfig = Object.assign({}, config);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  sheetHandle.config = Object.assign({}, config);
+  sheetHandle.config.data = mydata;
+  sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
+  sheetHandle.sheetId = "1";
+  tableHandles.push(sheetHandle);
 
         activateFirst('1-book', '1-sheet');
 

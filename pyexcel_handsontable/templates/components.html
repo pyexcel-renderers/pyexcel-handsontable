@@ -14,14 +14,16 @@
 
 {%macro sheet_script(sheet_uid, content)%}
 // BOOK_SHEET
-  var pyexcelElement = document.querySelector("#{{sheet_uid}}");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
+  var sheetHandle = {};
+  sheetHandle.element = document.querySelector("#{{sheet_uid}}");
 
   var mydata = {{content}};
-  var actualconfig = Object.assign({}, config);
-  actualconfig["data"] = mydata;
+  sheetHandle.config = Object.assign({}, config);
+  sheetHandle.config.data = mydata;
   {% if 'colHeaders' in sheet %}
-  actualconfig["colHeaders"] = {{sheet.colHeaders}}
+  sheetHandle.config.colHeaders = {{sheet.colHeaders}}
   {% endif %}
-  new Handsontable(pyexcelElement, actualconfig);
+  sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
+  sheetHandle.sheetId = "{{sheet_uid}}";
+  tableHandles.push(sheetHandle);
 {%endmacro%}

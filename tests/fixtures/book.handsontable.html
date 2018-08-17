@@ -43,6 +43,7 @@ body{font-family:Helvetica,sans-serif;margin:2 0 0 0}.tab{margin-bottom:0 !impor
 <!-- BOOK_SCRIPTS -->
 <script>
 var config = {"rowHeaders": true, "readOnly": true, "colHeaders": true, "preventOverflow": "hornizontal"};
+var tableHandles = [];
 function openTab(evt, bookId, tabId) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName(bookId);
@@ -65,31 +66,37 @@ function activateFirst(bookId, firstTab) {
     document.getElementById(firstTab+'-li').className += " active";
 }
 // BOOK_SHEET
-  var pyexcelElement = document.querySelector("#2");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
+  var sheetHandle = {};
+  sheetHandle.element = document.querySelector("#2");
 
   var mydata = [[1]];
-  var actualconfig = Object.assign({}, config);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  sheetHandle.config = Object.assign({}, config);
+  sheetHandle.config.data = mydata;
+  sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
+  sheetHandle.sheetId = "2";
+  tableHandles.push(sheetHandle);
 
 // BOOK_SHEET
-  var pyexcelElement = document.querySelector("#3");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
+  var sheetHandle = {};
+  sheetHandle.element = document.querySelector("#3");
 
   var mydata = [[2]];
-  var actualconfig = Object.assign({}, config);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  sheetHandle.config = Object.assign({}, config);
+  sheetHandle.config.data = mydata;
+  sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
+  sheetHandle.sheetId = "3";
+  tableHandles.push(sheetHandle);
 
 // BOOK_SHEET
-  var pyexcelElement = document.querySelector("#4");
-  var pyexcelElementContainer = pyexcelElement.parentNode;
+  var sheetHandle = {};
+  sheetHandle.element = document.querySelector("#4");
 
   var mydata = [[3]];
-  var actualconfig = Object.assign({}, config);
-  actualconfig["data"] = mydata;
-  new Handsontable(pyexcelElement, actualconfig);
+  sheetHandle.config = Object.assign({}, config);
+  sheetHandle.config.data = mydata;
+  sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
+  sheetHandle.sheetId = "4";
+  tableHandles.push(sheetHandle);
 
 activateFirst('1-book', '2-sheet');
 					
