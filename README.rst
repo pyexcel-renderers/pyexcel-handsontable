@@ -58,9 +58,8 @@ Python user/developer in viewing plain data.
 Main features:
 
 #. transform your excel sheets into excel alike html file.
-#. embed your excel sheets into your web page
-
-.. image:: https://github.com/pyexcel/pyexcel-handsontable/raw/master/demo/screenshot.png
+#. embed your excel sheets into your web page.
+#. show your data like excel in jupyter notebook (added in 0.0.2).
 
 Here is one liner to use it with pyexcel:
 
@@ -74,10 +73,27 @@ Alternatively, you can use this library with pyexcel cli module::
 
 
     $ pip install pyexcel-cli
-	$ pyexcel transcode your.xls your.handsontable.html
+    $ pyexcel transcode your.xls your.handsontable.html
 
 
 Please remember to give this file suffix always: **handsontable.html**. It is because `handsontable.html` triggers this plugin in pyexcel.
+
+
+Screenshots
+--------------
+
+View as html
+*****************
+
+.. image:: https://github.com/pyexcel/pyexcel-handsontable/raw/master/demo/screenshot.png
+
+
+View in jupyter notebook
+**************************
+
+.. image:: https://github.com/pyexcel/pyexcel-handsontable/raw/master/demo/jupyter-demo.png
+
+
 
 
 

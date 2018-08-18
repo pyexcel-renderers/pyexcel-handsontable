@@ -1,0 +1,19 @@
+name: pyexcel-handsontable
+organisation: pyexcel-renderers
+releases:
+- changes:
+  - action: Updated
+    details:
+    - "`#1`: keep the access to the rendered handsontables"
+    - "`#3`: pass on custom handsontable configurations"
+  - action: Added
+    details:
+    - "support jupyter-notebook"
+  date: 19-08-2018
+  version: 0.0.2
+- changes:
+  - action: Added
+    details:
+    - initial release
+  date: 19-06-2017
+  version: 0.0.1

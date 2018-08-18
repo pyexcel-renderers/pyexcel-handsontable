@@ -1,7 +1,26 @@
 Change log
-===========
+================================================================================
 
-0.1.0 - 19.06.2017
+0.0.2 - 19-08-2018
 --------------------------------------------------------------------------------
 
-Initial release. Present your data in handsontable.
+Updated
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. `#1 <https://github.com/pyexcel-renderers/pyexcel-handsontable/issues/1>`_:
+   keep the access to the rendered handsontables
+#. `#3 <https://github.com/pyexcel-renderers/pyexcel-handsontable/issues/3>`_:
+   pass on custom handsontable configurations
+
+Added
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. support jupyter-notebook
+
+0.0.1 - 19-06-2017
+--------------------------------------------------------------------------------
+
+Added
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. initial release

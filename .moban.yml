@@ -17,3 +17,6 @@ targets:
   - "pyexcel_handsontable/templates/css.html": "handsontable/style.css.jj2"
   - "docs/source/index.rst": "docs/source/index.rst"
   - "docs/source/conf.py": "docs/source/conf.py.jj2"
+  - output: CHANGELOG.rst
+    configuration: changelog.yml
+    template: CHANGELOG.rst.jj2
