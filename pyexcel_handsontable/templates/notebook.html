@@ -54,7 +54,7 @@
     require([ 'handsontable' ],function(Handsontable){
         var config = {{config}};
         {% for sheet in sheets %}
-        {{ sheet_script(sheet.uid, sheet.content) }}
+        {{ sheet_script(sheet.uid, sheet.content, sheet.style) }}
         {% endfor %}
         activateFirst('{{uid}}', '{{active}}-sheet');
 

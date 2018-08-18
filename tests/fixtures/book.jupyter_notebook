@@ -108,36 +108,42 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   sheetHandle.element = document.querySelector("#2");
 
   var mydata = [[1]];
-  var customStyle = ;
+  var customStyle = {'notused': 'value'};
   sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "2";
-  tableHandles.push(sheetHandle);
+  if(tableHandles){
+    tableHandles.push(sheetHandle);
+  }
 
         // BOOK_SHEET
   var sheetHandle = {};
   sheetHandle.element = document.querySelector("#3");
 
   var mydata = [[2]];
-  var customStyle = ;
+  var customStyle = {'notused': 'value'};
   sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "3";
-  tableHandles.push(sheetHandle);
+  if(tableHandles){
+    tableHandles.push(sheetHandle);
+  }
 
         // BOOK_SHEET
   var sheetHandle = {};
   sheetHandle.element = document.querySelector("#4");
 
   var mydata = [[3]];
-  var customStyle = ;
+  var customStyle = {'notused': 'value'};
   sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "4";
-  tableHandles.push(sheetHandle);
+  if(tableHandles){
+    tableHandles.push(sheetHandle);
+  }
 
         activateFirst('1-book', '2-sheet');
 

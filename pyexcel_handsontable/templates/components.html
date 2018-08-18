@@ -23,5 +23,7 @@
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "{{sheet_uid}}";
-  tableHandles.push(sheetHandle);
+  if(tableHandles){
+    tableHandles.push(sheetHandle);
+  }
 {%endmacro%}

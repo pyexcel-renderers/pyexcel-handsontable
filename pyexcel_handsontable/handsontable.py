@@ -79,7 +79,7 @@ class HandsonTable(Renderer):
                 'uid': sheet_uid,
                 'name': sheet.name,
                 'content': _dumps(sheet.array),
-                'style': {}
+                'style': {"notused": "value"}
             }
             if sheet.name in styles:
                 sheet_style = styles.get(sheet.name)
