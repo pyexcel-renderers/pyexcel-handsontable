@@ -8,21 +8,18 @@ class TestStyle(MyBaseCase):
         self.fake_uuid.side_effect = ['1', '2', '3', '4']
         styles = {
             "styled sheet": {
-                "colWidths": [100, 100],
-                "colHeaders": ['test'],
-                "columns": [
-                    {"data": "title", "renderer": "html"}
-                ]
+                "colWidths": [100, 100]
             }
         }
+        expected = 'var customStyle = {"colWidths": [100, 100]}'
         book = pyexcel.Book()
         book += pyexcel.Sheet([[1]])
         book += pyexcel.Sheet([[2]], name="styled sheet")
         book += pyexcel.Sheet([[3]])
         book.save_as(self._test_file, styles=styles)
-        self.compareTwoFiles(
-            self._test_file,
-            'tests/fixtures/book.handsontable.html')
+        with codecs.open(self._test_file, 'r', encoding='utf-8') as f:
+            content = f.read()
+            assert expected in content
 
 
 class TestBook(MyTestCase):

@@ -70,7 +70,8 @@ function activateFirst(bookId, firstTab) {
   sheetHandle.element = document.querySelector("#2");
 
   var mydata = [[1]];
-  sheetHandle.config = Object.assign({}, config);
+  var customStyle = {};
+  sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "2";
@@ -81,7 +82,8 @@ function activateFirst(bookId, firstTab) {
   sheetHandle.element = document.querySelector("#3");
 
   var mydata = [[2]];
-  sheetHandle.config = Object.assign({}, config);
+  var customStyle = {};
+  sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "3";
@@ -92,7 +94,8 @@ function activateFirst(bookId, firstTab) {
   sheetHandle.element = document.querySelector("#4");
 
   var mydata = [[3]];
-  sheetHandle.config = Object.assign({}, config);
+  var customStyle = {};
+  sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "4";
