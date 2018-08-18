@@ -45,7 +45,7 @@ class HandsonTable(Renderer):
         """
         Render the book data in handsontable
         """
-        book_data = self._parse_book(book)
+        book_data = self._parse_book(book, **keywords)
         book_data['css_url'] = css_url
         book_data['js_url'] = js_url
         if embed:
@@ -78,15 +78,13 @@ class HandsonTable(Renderer):
             handson_sheet = {
                 'uid': sheet_uid,
                 'name': sheet.name,
-                'content': _dumps(sheet.array)
+                'content': _dumps(sheet.array),
+                'style': {}
             }
             if sheet.name in styles:
                 sheet_style = styles.get(sheet.name)
-                if 'column_widths' in sheet_style:
-                    handson_sheet['colWidths'] = _dump_dict(
-                        sheet_style['column_widths'])
-            if len(sheet.colnames) > 0:
-                handson_sheet['colHeaders'] = _dump_dict(sheet.colnames)
+                handson_sheet['style'] = _dump_dict(
+                    sheet_style)
             book_data['sheets'].append(handson_sheet)
             uids.append(sheet_uid)
         book_data['active'] = uids[0]

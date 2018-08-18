@@ -35,7 +35,7 @@ function activateFirst(bookId, firstTab) {
     document.getElementById(firstTab+'-li').className += " active";
 }
 {% for sheet in sheets %}
-{{ sheet_script(sheet.uid, sheet.content) }}
+{{ sheet_script(sheet.uid, sheet.content, sheet.style) }}
 {% endfor %}
 activateFirst('{{uid}}', '{{active}}-sheet');
 					

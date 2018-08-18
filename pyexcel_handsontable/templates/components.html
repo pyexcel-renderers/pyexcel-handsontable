@@ -12,20 +12,15 @@
 </div>
 {%endmacro%}
 
-{%macro sheet_script(sheet_uid, content)%}
+{%macro sheet_script(sheet_uid, content, style)%}
 // BOOK_SHEET
   var sheetHandle = {};
   sheetHandle.element = document.querySelector("#{{sheet_uid}}");
 
   var mydata = {{content}};
-  sheetHandle.config = Object.assign({}, config);
+  var customStyle = {{ style }};
+  sheetHandle.config = Object.assign({}, config, customStyle);
   sheetHandle.config.data = mydata;
-  {% if 'colHeaders' in sheet %}
-  sheetHandle.config.colHeaders = {{sheet.colHeaders}}
-  {% endif %}
-  {% if 'colWidths' in sheet %}
-  sheetHandle.config.colWidths = {{sheet.colWidths}}
-  {% endif %}
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "{{sheet_uid}}";
   tableHandles.push(sheetHandle);

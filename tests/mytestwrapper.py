@@ -13,17 +13,13 @@ DEFAULT_CONFIG = ('{"rowHeaders": true, ' +
                   '"preventOverflow": "hornizontal"}')
 
 
-class MyTestCase(TestCase):
+class MyBaseCase(TestCase):
     def setUp(self):
         self.maxDiff = None
         self._test_file = "test.handsontable.html"
         self.patcher1 = patch(
             'pyexcel_handsontable.handsontable._generate_uuid')
         self.fake_uuid = self.patcher1.start()
-
-        self.patcher2 = patch(
-            'pyexcel_handsontable.handsontable._dump_dict')
-        self.dump_dict = self.patcher2.start()
 
     def customAssertMultiLineEqual(self, a, b):
         if PY26:
@@ -32,7 +28,6 @@ class MyTestCase(TestCase):
             self.assertMultiLineEqual(a, b)
 
     def tearDown(self):
-        self.patcher2.stop()
         self.patcher1.stop()
         if os.path.exists(self._test_file):
             os.unlink(self._test_file)
@@ -43,3 +38,15 @@ class MyTestCase(TestCase):
         with open(fileb, 'r') as f:
             expected = f.read()
         self.customAssertMultiLineEqual(expected, actual)
+
+
+class MyTestCase(MyBaseCase):
+    def setUp(self):
+        super(MyTestCase, self).setUp()
+        self.patcher2 = patch(
+            'pyexcel_handsontable.handsontable._dump_dict')
+        self.dump_dict = self.patcher2.start()
+
+    def tearDown(self):
+        self.patcher2.stop()
+        super(MyTestCase, self).tearDown()

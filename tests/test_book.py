@@ -1,6 +1,28 @@
 import codecs
 import pyexcel
-from mytestwrapper import MyTestCase, DEFAULT_CONFIG
+from mytestwrapper import MyTestCase, MyBaseCase, DEFAULT_CONFIG
+
+
+class TestStyle(MyBaseCase):
+    def test_book_renderring_style(self):
+        self.fake_uuid.side_effect = ['1', '2', '3', '4']
+        styles = {
+            "styled sheet": {
+                "colWidths": [100, 100],
+                "colHeaders": ['test'],
+                "columns": [
+                    {"data": "title", "renderer": "html"}
+                ]
+            }
+        }
+        book = pyexcel.Book()
+        book += pyexcel.Sheet([[1]])
+        book += pyexcel.Sheet([[2]], name="styled sheet")
+        book += pyexcel.Sheet([[3]])
+        book.save_as(self._test_file, styles=styles)
+        self.compareTwoFiles(
+            self._test_file,
+            'tests/fixtures/book.handsontable.html')
 
 
 class TestBook(MyTestCase):
