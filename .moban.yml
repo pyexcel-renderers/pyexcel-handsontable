@@ -17,5 +17,3 @@ targets:
   - "pyexcel_handsontable/templates/css.html": "handsontable/style.css.jj2"
   - "docs/source/index.rst": "docs/source/index.rst"
   - "docs/source/conf.py": "docs/source/conf.py.jj2"
-  - "tests/fixtures/book.handsontable.html": "tests/fixtures/book.handsontable.html"
-  - "tests/fixtures/sheet_rendering.html": "tests/fixtures/sheet_rendering.html"

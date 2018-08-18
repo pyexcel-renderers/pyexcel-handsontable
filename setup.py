@@ -6,6 +6,16 @@ import sys
 import codecs
 from shutil import rmtree
 from setuptools import setup, find_packages, Command
+try:
+    from pyecharts_jupyter_installer import install_cmd_for
+except ImportError:
+    import subprocess
+    import importlib
+
+    subprocess.check_call([sys.executable, '-m',
+                           'pip', 'install', 'pyecharts-jupyter-installer'])
+    install_cmd_for = importlib.import_module(
+        'pyecharts_jupyter_installer').install_cmd_for
 PY2 = sys.version_info[0] == 2
 PY26 = PY2 and sys.version_info[1] < 7
 
@@ -41,7 +51,10 @@ INSTALL_REQUIRES = [
     'pyexcel>=0.5.0',
     'jinja2',
 ]
-SETUP_COMMANDS = {}
+SETUP_COMMANDS = install_cmd_for(
+    'pyexcel-handsontable',
+    'pyexcel_handsontable/templates/pyexcel-handsontable'
+)
 
 
 PACKAGES = find_packages(exclude=['ez_setup', 'examples', 'tests'])
