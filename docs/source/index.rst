@@ -5,7 +5,6 @@
 :Source code: http://github.com/pyexcel-renderers/pyexcel-handsontable.git
 :Issues: http://github.com/pyexcel-renderers/pyexcel-handsontable/issues
 :License: New BSD License
-:Development: |release|
 :Released: |version|
 :Generated: |today|
 
