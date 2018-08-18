@@ -58,7 +58,9 @@ class HandsonTable(Renderer):
         book = [sheet]
         self.render_book(book, embed=embed, **keywords)
 
-    def _parse_book(self, book, **keywords):
+    def _parse_book(self, book, styles=None, **keywords):
+        if styles is None:
+            styles = {}
         config = {}
         config.update(DEFAULTS)
         config.update(keywords)
@@ -78,6 +80,11 @@ class HandsonTable(Renderer):
                 'name': sheet.name,
                 'content': _dumps(sheet.array)
             }
+            if sheet.name in styles:
+                sheet_style = styles.get(sheet.name)
+                if 'column_widths' in sheet_style:
+                    handson_sheet['colWidths'] = _dump_dict(
+                        sheet_style['column_widths'])
             if len(sheet.colnames) > 0:
                 handson_sheet['colHeaders'] = _dump_dict(sheet.colnames)
             book_data['sheets'].append(handson_sheet)

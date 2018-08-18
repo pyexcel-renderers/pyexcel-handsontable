@@ -23,6 +23,9 @@
   {% if 'colHeaders' in sheet %}
   sheetHandle.config.colHeaders = {{sheet.colHeaders}}
   {% endif %}
+  {% if 'colWidths' in sheet %}
+  sheetHandle.config.colWidths = {{sheet.colWidths}}
+  {% endif %}
   sheetHandle.handsontable = new Handsontable(sheetHandle.element, sheetHandle.config);
   sheetHandle.sheetId = "{{sheet_uid}}";
   tableHandles.push(sheetHandle);
