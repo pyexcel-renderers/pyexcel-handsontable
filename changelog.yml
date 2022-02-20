@@ -7,6 +7,7 @@ releases:
     - "`#7`: upgrade handsontable to 6.2.2"
   date: 20-02-2022
   version: 0.0.3
+- changes:
   - action: Updated
     details:
     - "`#1`: keep the access to the rendered handsontables"

@@ -1,13 +1,16 @@
 all: test
 
-test:
+test: lint
 	bash test.sh
 
-document:
-	bash document.sh
+install_test:
+	pip install -r tests/requirements.txt
 
-css:
-	python -mscss <styles/style.scss >.moban.d/handsontable/style.css.jj2
-	cp .moban.d/handsontable/style.css.jj2 styles/style.css
-	python -mscss <styles/rtd_style.scss >.moban.d/handsontable/rtd_style.css.jj2
-	cp .moban.d/handsontable/rtd_style.css.jj2 styles/rtd_style.css
+lint:
+	bash lint.sh
+
+format:
+	bash format.sh
+
+git-diff-check:
+	git diff --exit-code
