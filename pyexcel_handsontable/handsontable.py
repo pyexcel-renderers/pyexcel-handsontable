@@ -4,7 +4,7 @@
 
     Transform pyexcel sheet into a handsontable html
 
-    :copyright: (c) 2016-2017 by Onni Software Ltd.
+    :copyright: (c) 2016-2022 by Onni Software Ltd.
     :license: New BSD License, see LICENSE for further details
 """
 import os
@@ -18,7 +18,7 @@ from pyexcel.renderer import Renderer
 from jinja2 import Environment, FileSystemLoader
 
 
-HOST = "https://cdnjs.cloudflare.com/ajax/libs/handsontable/0.31.0/"
+HOST = "https://cdnjs.cloudflare.com/ajax/libs/handsontable/6.2.2/"
 JS_URL = HOST + "handsontable.full.min.js"
 CSS_URL = HOST + "handsontable.full.min.css"
 DEFAULTS = dict(
