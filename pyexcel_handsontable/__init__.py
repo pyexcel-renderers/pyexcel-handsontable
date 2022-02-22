@@ -7,11 +7,10 @@
     :copyright: (c) 2016-2017 by Onni Software Ltd.
     :license: New BSD License, see LICENSE for further details
 """
-from lml.plugin import PluginInfoChain, PluginInfo
+from lml.plugin import PluginInfo, PluginInfoChain
 
 
 class MyPluginInfo(PluginInfo):
-
     def tags(self):
         file_types = self.file_types
         for file_type in file_types:
@@ -20,16 +19,16 @@ class MyPluginInfo(PluginInfo):
 
 PluginInfoChain(__name__).add_a_plugin_instance(
     MyPluginInfo(
-        'renderer',
-        '%s.handsontable.HandsonTable' % __name__,
-        file_types=['handsontable.html'],
-        stream_type='string'
+        "renderer",
+        "%s.handsontable.HandsonTable" % __name__,
+        file_types=["handsontable.html"],
+        stream_type="string",
     )
 ).add_a_plugin_instance(
     MyPluginInfo(
-        'renderer',
-        '%s.handsontable.HandsonTableInJupyter' % __name__,
-        file_types=['handsontable'],
-        stream_type='string'
+        "renderer",
+        "%s.handsontable.HandsonTableInJupyter" % __name__,
+        file_types=["handsontable"],
+        stream_type="string",
     )
 )
