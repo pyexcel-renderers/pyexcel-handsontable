@@ -26,7 +26,6 @@ class TestSheet(MyTestCase):
         <script src="js"></script>
         """
         )
-        print(actual)
         assert expected in actual
 
     def test_rendering_embed(self):
