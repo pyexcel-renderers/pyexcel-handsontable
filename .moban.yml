@@ -2,6 +2,7 @@ overrides: "git://github.com/pyexcel/pyexcel-mobans!/mobanfile.yaml"
 configuration:
   configuration: pyexcel-handsontable.yml
 targets:
+  - setup.py: custom_setup.py.jj2
   - README.rst: README.rst
   - .gitignore: gitignore.jj2
   - "pyexcel_handsontable/templates/css.html": "handsontable/style.css.jj2"
