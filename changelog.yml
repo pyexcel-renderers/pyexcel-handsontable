@@ -4,8 +4,9 @@ releases:
 - changes:
   - action: Updated
     details:
+    - "`#5`: remove installation support for jupyter-notebook"
     - "`#7`: upgrade handsontable to 6.2.2"
-  date: 20-02-2022
+  date: 02-11-2025
   version: 0.0.3
 - changes:
   - action: Updated
