@@ -1,0 +1,5 @@
+{% extends 'setup.py.jj2' %}
+
+{%- block morefiles %}
+ "CONTRIBUTORS.rst",
+{%- endblock %}
